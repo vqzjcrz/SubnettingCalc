@@ -36,13 +36,14 @@ def getCIDR(ipInput):
         subnetMask = ".".join([str(int(subnetMaskB[index : index + 8], 2)) for index in range(0, len(subnetMaskB), 8)])
         subnetMaskB = ".".join([subnetMaskB[i : i + 8] for i in range(0, len(subnetMaskB), 8)])
         iSubMask = [abs(255 - sA[i]) for i in range(0, len(sA))]
+        iSubMaskB = ".".join([format(int(iSubMask[i]), "b") for i in range(0, len(iSubMask))])
         lRange = ".".join([str(int(re.findall("\d+", nID)[i]) + int(iSubMask[i])) for i in range(0, len(iSubMask))])
         luRange = lRange[:-1] + str(int(lRange[len(lRange) - 1]) - 1)
         iSubMask = ".".join([str(iSubMask[i]) for i in range(0, len(iSubMask))])
         subBits = cidr % 8
         maxSubs = 2**subBits
         os.system("clear")
-        print(f'Provided Input\n---------------\n| IP: {".".join(ipInput)}\n| CIDR Notation: /{cidr}\n\nSubnet Info\n------------\n| Subnet Class: {c}\n| First Octet Range: {octR}\n| Binary IP: {bIP}\n| Subnet Mask: {subnetMask}\n| Binary Subnet Mask: {subnetMaskB}\n| Wildcard Mask: {iSubMask}\n| Network ID: {nID}\n| Default Gateway: {nID[:-1] + "1"}\n| Mask Bits: {cidr}\n| Host Bits: {hostB}\n| Subnet Bits: {subBits}\n| Max Subnets: {maxSubs}\n| Usable IP Range: {nID[:-1] + "1"} - {luRange}\n| Broadcast ID: {lRange}\n| Total Hosts: {"{:,}".format(2**hostB)}\n| Usable Hosts: {"{:,}".format((2**hostB) - 2)}\n')
+        print(f'Provided Input\n---------------\n| IP: {".".join(ipInput)}\n| CIDR Notation: /{cidr}\n\nSubnet Info\n------------\n☆| Subnet Class: {c}\n☆| First Octet Range: {octR}\n☆| Binary IP: {bIP}\n☆| Subnet Mask: {subnetMask}\n☆| Binary Subnet Mask: {subnetMaskB}\n☆| Wildcard Mask: {iSubMask}\n☆| Binary Wildcard Mask: {iSubMaskB}\n☆| Network ID: {nID}\n☆| Default Gateway: {nID[:-1] + "1"}\n☆| Mask Bits: {cidr}\n☆| Host Bits: {hostB}\n☆| Subnet Bits: {subBits}\n☆| Max Subnets: {maxSubs}\n☆| Usable IP Range: {nID[:-1] + "1"} - {luRange}\n☆| Broadcast ID: {lRange}\n☆| Total Hosts: {"{:,}".format(2**hostB)}\n☆| Usable Hosts: {"{:,}".format((2**hostB) - 2)}\n')
         
     else: 
         print("Improper CIDR, try again.")
