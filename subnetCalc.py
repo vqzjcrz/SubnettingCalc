@@ -74,8 +74,6 @@ def getIp():
 
 
 #Ask for continuation
-
-ans = str(input("Would you like to subnet? y/n ")).lower()
 os.system("clear")
 while n := input("Would you like to calculate a subnet? (yes/no)").lower() != "no" :
     getIp()
