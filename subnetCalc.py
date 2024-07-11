@@ -25,7 +25,7 @@ def getCIDR(ipInput):
         exit()
     
     cidr = int(input(f'Please enter a proper CIDR between {_uclass} and {_class}: '))
-    os.system("clear")
+    os.system("cls")
     if _uclass <= cidr <= _class:
         bIP = [((8 - len(format(int(ipInput[i]), "b"))) * "0") + str(format(int(ipInput[i]), "b")) for i in range(0, len(ipInput))]
         subnetMaskB = cidr * "1" + (32 - cidr) * "0"
@@ -42,7 +42,7 @@ def getCIDR(ipInput):
         iSubMask = ".".join([str(iSubMask[i]) for i in range(0, len(iSubMask))])
         subBits = cidr % 8
         maxSubs = 2**subBits
-        os.system("clear")
+        os.system("cls")
         print(f'Provided Input\n---------------\n| IP: {".".join(ipInput)}\n| CIDR Notation: /{cidr}\n\nSubnet Info\n------------\n\
 ☆| Subnet Class: {c}\n☆| First Octet Range: {octR}\n☆| Binary IP: {bIP}\n\
 ☆| Subnet Mask: {subnetMask}\n☆| Binary Subnet Mask: {subnetMaskB}\n\
@@ -59,7 +59,7 @@ def getCIDR(ipInput):
 #Verify IP
 def getIp():
     ip = str(input("Please enter a proper IP: "))
-    os.system("clear")
+    os.system("cls")
     ip = re.findall("\d+\.\d+\.\d+\.\d+", ip)
     if ip:
         splitIp = re.findall("\d+", ip[0])
@@ -74,6 +74,6 @@ def getIp():
 
 
 #Ask for continuation
-os.system("clear")
+os.system("cls")
 while n := input("Would you like to calculate a subnet? (yes/no)").lower() != "no" :
     getIp()
